@@ -25,6 +25,14 @@ const Index = () => {
       features: ['Premium ESP', 'AutoCrystal', 'Scaffold', 'AntiKnockback', 'Velocity'],
       popular: true,
     },
+    {
+      id: 3,
+      name: 'Catlavan',
+      price: '1200₽',
+      image: 'https://cdn.poehali.dev/projects/868bf0f9-31a5-4de1-ba77-35ad04935521/files/848f9164-5258-4827-9df7-927a1263d6d7.jpg',
+      features: ['ESP', 'NoFall', 'Criticals', 'AutoArmor', 'ChestStealer'],
+      popular: false,
+    },
   ];
 
   const paymentMethods = [
