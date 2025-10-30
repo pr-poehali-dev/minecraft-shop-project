@@ -78,11 +78,7 @@ const Index = () => {
     },
   ];
 
-  const reviews = [
-    { name: 'Алексей', rating: 5, text: 'Отличный чит, работает стабильно!' },
-    { name: 'Дмитрий', rating: 5, text: 'Nursultan - лучший чит для анархии' },
-    { name: 'Михаил', rating: 4, text: 'Expensive стоит своих денег' },
-  ];
+  const reviews: { name: string; rating: number; text: string }[] = [];
 
   const scrollToSection = (id: string) => {
     setActiveSection(id);
