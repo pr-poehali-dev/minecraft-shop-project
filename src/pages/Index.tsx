@@ -94,7 +94,7 @@ const Index = () => {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-heading font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              MCCheats
+              Kanek1sSoft
             </h1>
             <div className="hidden md:flex gap-6">
               {['home', 'catalog', 'payment', 'faq', 'reviews', 'contact'].map((section) => (
@@ -281,7 +281,7 @@ const Index = () => {
 
       <footer className="border-t border-border bg-card/30 py-8 px-4">
         <div className="container mx-auto text-center text-sm text-muted-foreground">
-          <p>© 2024 MCCheats. Все права защищены.</p>
+          <p>© 2025 Kanek1sSoft. Все права защищены.</p>
         </div>
       </footer>
 
