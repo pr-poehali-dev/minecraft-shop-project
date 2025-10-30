@@ -1,12 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
+import { AuthDialog } from '@/components/AuthDialog';
+import { Toaster } from '@/components/ui/toaster';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
+  const [authOpen, setAuthOpen] = useState(false);
+  const [user, setUser] = useState<{ email: string; username: string } | null>(null);
+
+  useEffect(() => {
+    const savedUser = localStorage.getItem('user');
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    setUser(null);
+  };
 
   const cheats = [
     {
@@ -101,9 +118,22 @@ const Index = () => {
                 </button>
               ))}
             </div>
-            <Button className="md:hidden" variant="ghost" size="icon">
-              <Icon name="Menu" size={24} />
-            </Button>
+            <div className="flex items-center gap-2">
+              {user ? (
+                <div className="flex items-center gap-3">
+                  <span className="text-sm text-muted-foreground hidden md:block">Привет, {user.username}</span>
+                  <Button variant="outline" size="sm" onClick={handleLogout}>
+                    <Icon name="LogOut" size={16} className="mr-2" />
+                    Выйти
+                  </Button>
+                </div>
+              ) : (
+                <Button variant="default" size="sm" onClick={() => setAuthOpen(true)}>
+                  <Icon name="User" size={16} className="mr-2" />
+                  Вход
+                </Button>
+              )}
+            </div>
           </div>
         </div>
       </nav>
@@ -170,7 +200,7 @@ const Index = () => {
                   </ul>
                 </CardContent>
                 <CardFooter>
-                  <Button className="w-full" size="lg">
+                  <Button className="w-full" size="lg" onClick={() => !user && setAuthOpen(true)}>
                     <Icon name="ShoppingCart" size={18} className="mr-2" />
                     Купить
                   </Button>
@@ -258,6 +288,9 @@ const Index = () => {
           <p>© 2024 MCCheats. Все права защищены.</p>
         </div>
       </footer>
+
+      <AuthDialog open={authOpen} onOpenChange={setAuthOpen} onAuthSuccess={setUser} />
+      <Toaster />
     </div>
   );
 };
