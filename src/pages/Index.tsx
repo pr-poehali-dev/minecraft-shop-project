@@ -25,14 +25,6 @@ const Index = () => {
       features: ['Premium ESP', 'AutoCrystal', 'Scaffold', 'AntiKnockback', 'Velocity'],
       popular: true,
     },
-    {
-      id: 3,
-      name: 'Standard',
-      price: '800₽',
-      image: 'https://cdn.poehali.dev/projects/868bf0f9-31a5-4de1-ba77-35ad04935521/files/848f9164-5258-4827-9df7-927a1263d6d7.jpg',
-      features: ['Basic ESP', 'Fly', 'Speed'],
-      popular: false,
-    },
   ];
 
   const paymentMethods = [
